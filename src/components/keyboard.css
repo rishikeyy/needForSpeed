@@ -1,0 +1,46 @@
+
+.button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  /* //taken from w3 schools */
+  
+  
+  
+  
+  .item1 { grid-area: ordBtn; }
+  .item2 { grid-area: TabCtrlAlt; }
+  .item3 { grid-area: CapsLock; }
+  .item4 { grid-area: Shift; }
+  .item5 { grid-area: Spacebar; }
+  .item6 { grid-area: Backspace; }
+  .item7 { grid-area: Enter; }
+  
+  
+  
+  
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      'ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn Backspace'
+      'TabCtrlAlt ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn TabCtrlAlt'
+      'CapsLock ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn  Enter'
+      'Shift ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn ordBtn   Shift'
+      'TabCtrlAlt TabCtrlAlt Spacebar TabCtrlAlt TabCtrlAlt';
+  
+  
+  
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+  
+  
