@@ -4,7 +4,7 @@ import './paragraphs'
 const paras=Object.values(paragrahs);
 const [i,seti]=useState(0);
 const [ii,setii]=useState(0);
-const n=len(paras)
+const n=paras.length
 const allTypedEntries=0,unCorrectedErrors=0;
 const [currEle,setCurrEle]=useState(0);
 
@@ -16,23 +16,6 @@ const newElement = document.createElement("p");//this is where text will be show
 
 
 
-useEffect(()=>{
-    const str = paras[i][ii];
-   
-  const wrappedLetters ="";
-  
-    for(let index=0;index<len(str);index++)
-        if(str[index]!=' ')
-        wrappedLetters+= <span id={index}>{word}</span>
-        else 
-        wrappedLetters+= <span style="display: inline-block; font-size: 24px; color: #000000; background: #cccccc; border-radius: 6px; padding: 10px 20px;">•</span>
-
-    const tempEle=document.createElement('p')
-    p.innerHTML=wrappedLetters
-   // newElement.innerHTML = wrappedLetters;
-    document.getElementById("textcontainer").innerHTML=p.innerHTML;
-    //how to add shadow dom to content for undeliningx
-},[i,ii,currEle]);
 
 function paraChanger(){
     seti(i+1);
@@ -46,19 +29,39 @@ function paraChanger(){
 
     function nextChar(){
     //move current underliner to next char and render content on screen
-    allTypedEnries++;
+    allTypedEntries++;
     setCurrEle(currEle+1)
     
     }
 
-    function textContainer(){
+    function TextContainer(){
+
+        useEffect(()=>{
+            const str = paras[i][ii];
+           
+          const wrappedLetters ="";
+          
+            for(let index=0;index<(str.length);index++)
+                if(str[index]!=' ')
+                wrappedLetters+= <span id={index}>{str[index]}</span>
+                else 
+                wrappedLetters+= <span style="display: inline-block; font-size: 24px; color: #000000; background: #cccccc; border-radius: 6px; padding: 10px 20px;">•</span>
+        
+            const tempEle=document.createElement('p')
+            tempEle.innerHTML=wrappedLetters
+           // newElement.innerHTML = wrappedLetters;
+            document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
+            //how to add shadow dom to content for undeliningx
+        },[i,ii,currEle]);
+        
+
         return(
             <>
             <textcontainer id="textcontainer"></textcontainer>
             </>
         )
     }
-    export default textContainer;
+    export default TextContainer;
 
     // export {
     //     paraChanger,

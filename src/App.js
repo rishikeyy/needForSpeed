@@ -1,5 +1,5 @@
 
-
+import './components/content'
 
 function App() {
   return (
