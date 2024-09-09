@@ -18,7 +18,7 @@ function check_accuracy(allTypedEntries,unCorrectedErrors){
         //move to new letter 
        
         paraChanger();
-    }
+    } 
 	 //else start loop over again for same key
      else{
             setii(0);
@@ -30,7 +30,7 @@ function handleKeyDown(e){
 
 //screen animation showing which key pressed;
 
-if(e.key==str[i]){nextChar();}
+
 
 
 if(i==len(paras)){check_accuracy();}
@@ -40,6 +40,8 @@ unCorrectedErrors++;
 //we wait until correct character is not typed
 
 }
+
+if(e.key==str[i]){nextChar();}
 
 }
 

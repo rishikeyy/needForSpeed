@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './paragraphs'
+import './textcontainer'
+
 
 const paras=Object.values(paragrahs);
 const [i,seti]=useState(0);
@@ -53,6 +55,18 @@ function paraChanger(){
             document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
             //how to add shadow dom to content for undeliningx
         },[i,ii,currEle]);
+
+
+
+        useEffect(()=>{
+            //  remove the  underline class of prev element and add underline class to currEle
+            const prevEle = document.getElementsByClassName("underline");
+            element.classList.remove("underline");
+
+            //now add underline class to currEle
+            const containerChildren=  document.getElementById("textcontainer");
+            containerChildren[currEle].classList.add("underline");
+        },[currEle])
         
 
         return(

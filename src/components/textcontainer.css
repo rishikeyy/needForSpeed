@@ -1,0 +1,5 @@
+/* target the nth(currEle) child of textconatainer and underline it.   */
+
+.underline {
+    text-decoration: underline;
+  }
