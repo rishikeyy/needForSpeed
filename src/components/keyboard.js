@@ -1,6 +1,7 @@
-
+import React from 'react';
 import './keyboard.css'
-import './screentext.js'
+import './screentext'
+
 //pass text on screen to the keyboard->note text should be array of strings(coz for each character of keyboard many paras will be there.(will import data of paras)
 //also pass setter function of keybased para
 
@@ -41,11 +42,15 @@ unCorrectedErrors++;
 
 }
 
-if(e.key==str[i]){nextChar();}
+if(e.key==paras[i][ii]){nextChar();}
 
 }
 
-<div class="grid-container">
+function  Keyboard(){
+return (
+    <>
+    
+    <div class="grid-container">
   <div class="grid-item button" onKeyDown={handleKeyDown}>1</div>  // apply 'button' classname to all buttons;
   <div class="grid-item">2</div>
   <div class="grid-item">3</div>  
@@ -100,3 +105,10 @@ if(e.key==str[i]){nextChar();}
 
 </div>
 
+
+    
+    </>
+);
+}
+
+export default Keyboard;

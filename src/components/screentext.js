@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import './paragraphs'
-import './textcontainer'
+import './paragraphs.js'
+import './textcontainer.css'
 
 
-const paras=Object.values(paragrahs);
+
+const paras=Object.values(paras);
 const [i,seti]=useState(0);
 const [ii,setii]=useState(0);
+const [currEle,setCurrEle]=useState(0);
 const n=paras.length
 const allTypedEntries=0,unCorrectedErrors=0;
-const [currEle,setCurrEle]=useState(0);
+function TextContainer(){
 
-const newElement = document.createElement("p");//this is where text will be shown
+//const newElement = document.createElement("p");//this is where text will be shown
 
 
 
@@ -36,32 +38,32 @@ function paraChanger(){
     
     }
 
-    function TextContainer(){
+
 
         useEffect(()=>{
-            const str = paras[i][ii];
+            let str = paras[i][ii];
            
-          const wrappedLetters ="";
+          let wrappedLetters ="";
           
             for(let index=0;index<(str.length);index++)
                 if(str[index]!=' ')
-                wrappedLetters+= <span id={index}>{str[index]}</span>
+                wrappedLetters+= `<span id={index}>{str[index]}</span>`
                 else 
-                wrappedLetters+= <span style="display: inline-block; font-size: 24px; color: #000000; background: #cccccc; border-radius: 6px; padding: 10px 20px;">•</span>
+                wrappedLetters+= `<span id={index} style={{display: 'inline-block', fontsize: '24px', color: '#000000', background: '#cccccc', borderRadius:'6px', padding: '10px 20px'}}>•</span>`
         
-            const tempEle=document.createElement('p')
+            let tempEle=document.createElement('p')
             tempEle.innerHTML=wrappedLetters
            // newElement.innerHTML = wrappedLetters;
             document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
             //how to add shadow dom to content for undeliningx
-        },[i,ii,currEle]);
+        },[i,ii]);
 
 
 
         useEffect(()=>{
             //  remove the  underline class of prev element and add underline class to currEle
             const prevEle = document.getElementsByClassName("underline");
-            element.classList.remove("underline");
+            prevEle.classList.remove("underline");
 
             //now add underline class to currEle
             const containerChildren=  document.getElementById("textcontainer");

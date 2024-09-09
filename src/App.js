@@ -1,5 +1,5 @@
 
-import './components/content'
+import './components/content.js'
 
 function App() {
   return (
