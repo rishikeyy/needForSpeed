@@ -1,20 +1,29 @@
-import React from 'react';
+import{ React,useContext} from 'react';
 import './keyboard.css'
 import './screentext'
+import  paras from './paragraphs'
+import scontext from './Context';
+import {nextChar,paraChanger} from './screentext'
 
+
+
+function  Keyboard(){
+    const context=useContext(scontext)
+
+
+
+function handleKeyDown(e){
 //pass text on screen to the keyboard->note text should be array of strings(coz for each character of keyboard many paras will be there.(will import data of paras)
 //also pass setter function of keybased para
-
-
 //move all functions and events to separe module of textRendering
 
 function check_accuracy(allTypedEntries,unCorrectedErrors){
-	endTime=Date.now()
-	netTime=startTime-endTime;
-	GWPM=(allTypedEnries/5)/netTime;
+	let endTime=Date.now()
+	let netTime=context.startTime-endTime;
+	let GWPM=(allTypedEntries/5)/netTime;
 
-	NetWPM=GWPM-(unCorrectedErrors)/netTime;
-    let accuracy = (correctlyTypedWords / totalTypedWords) * 100;
+	let NetWPM=GWPM-(unCorrectedErrors)/netTime;
+    let accuracy = (context.correctlyTypedWords / context.totalTypedWords) * 100;
     if(accuracy>=90){
         //move to new letter 
        
@@ -22,31 +31,34 @@ function check_accuracy(allTypedEntries,unCorrectedErrors){
     } 
 	 //else start loop over again for same key
      else{
-            setii(0);
+        context.setii(0);
      
      }
 }
 
-function handleKeyDown(e){
+
 
 //screen animation showing which key pressed;
 
 
 
 
-if(i==len(paras)){check_accuracy();}
-else if(ii==len(paras[i])){check_accuracy(); }
+if(context.i==paras.length){check_accuracy(context.allTypedEntries,context.unCorrectedErrors);}
+else if(context.ii==(paras[context.i]).length){check_accuracy(context.allTypedEntries,context.unCorrectedErrors); }
 else {
-unCorrectedErrors++;
+    context.unCorrectedErrors++;
 //we wait until correct character is not typed
 
 }
 
-if(e.key==paras[i][ii]){nextChar();}
+if(e.key==paras[context.i][context.ii]){nextChar();}
 
 }
 
-function  Keyboard(){
+
+    
+
+
 return (
     <>
     

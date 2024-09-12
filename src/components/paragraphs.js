@@ -13,3 +13,5 @@ const paras = [
 ],
 
 ];
+
+export  default paras;

@@ -1,17 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import './paragraphs.js'
+import React, { useContext, useEffect, useState } from 'react';
+import paras from './paragraphs'
+
 import './textcontainer.css'
+import scontext from './Context';
+
+
+//now problem is usecontext is defined inside textcomponent and we want to use them in below two fuctions
+//but also we cant put those funtions in textcomp coz we want to export them->use wrapper functions
+
+export function paraChanger(){
+    context.seti(context.i+1);
+    if(context.i==context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
+    context. setCurrEle(0);
+    context.setii(0);
+    context.startTime=0;
+    context.correctlyTypedWords
+    context.totalTypedWords
+    //render next para on screen by useEffect
+   
+    }
+
+    function nextChar(){
+        //move current underliner to next char and render content on screen
+        context.allTypedEntries++;
+        context.setCurrEle(context.currEle+1)
+        
+        }
 
 
 
-const paras=Object.values(paras);
-const [i,seti]=useState(0);
-const [ii,setii]=useState(0);
-const [currEle,setCurrEle]=useState(0);
-const n=paras.length
-const allTypedEntries=0,unCorrectedErrors=0;
+
 function TextContainer(){
-
+    const context=useContext(scontext)
 //const newElement = document.createElement("p");//this is where text will be shown
 
 
@@ -21,27 +41,14 @@ function TextContainer(){
 
 
 
-function paraChanger(){
-    seti(i+1);
-    if(i==n)seti(i-1);//feed last key data if all keys are mastered and data is exhauasted
-    setCurrEle(0);
-    setii(0);
-    //render next para on screen by useEffect
-   
-    }
       
 
-    function nextChar(){
-    //move current underliner to next char and render content on screen
-    allTypedEntries++;
-    setCurrEle(currEle+1)
     
-    }
 
 
 
         useEffect(()=>{
-            let str = paras[i][ii];
+            let str = paras[context.i][context.ii];
            
           let wrappedLetters ="";
           
@@ -56,7 +63,7 @@ function paraChanger(){
            // newElement.innerHTML = wrappedLetters;
             document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
             //how to add shadow dom to content for undeliningx
-        },[i,ii]);
+        },[context.i,context.ii]);
 
 
 
@@ -67,8 +74,8 @@ function paraChanger(){
 
             //now add underline class to currEle
             const containerChildren=  document.getElementById("textcontainer");
-            containerChildren[currEle].classList.add("underline");
-        },[currEle])
+            containerChildren[context.currEle].classList.add("underline");
+        },[context.currEle])
         
 
         return(
@@ -78,7 +85,7 @@ function paraChanger(){
         )
     }
     export default TextContainer;
-
+    //export paraChanger
     // export {
     //     paraChanger,
     //     nextChar
