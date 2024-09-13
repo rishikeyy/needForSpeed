@@ -3,8 +3,8 @@ import './keyboard.css'
 import './screentext'
 import  paras from './paragraphs'
 import scontext from './Context';
-import {nextChar,paraChanger} from './screentext'
-
+import { wrapperFunction } from './screentext';
+const  {nextChar,paraChanger}= wrapperFunction();
 
 
 function  Keyboard(){

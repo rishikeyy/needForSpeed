@@ -1,11 +1,11 @@
 
 import { useContext,React, useState } from 'react';
-
-import './components/content.js'
+import paras from './components/paragraphs.js';
+import Content from './components/content.js'
 import  scontext from './components/Context.js'
 function App() {
   
-  const paras=Object.values(paras);
+ // const paras=Object.values(paras);
   const [i,seti]=useState(0);
   const [ii,setii]=useState(0);
   const [currEle,setCurrEle]=useState(0);
@@ -17,8 +17,8 @@ function App() {
 
   return (
    <scontext.Provider value={{paras,i,ii,seti,setii,currEle,setCurrEle,n,allTypedEntries,unCorrectedErrors,startTime,correctlyTypedWords,totalTypedWords}}>
-    <content/>
-    <navbar/>
+    <Content/>
+    {/* <Navbar/> */}
     </scontext.Provider>
   );
 }

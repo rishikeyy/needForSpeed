@@ -3,35 +3,38 @@ import paras from './paragraphs'
 
 import './textcontainer.css'
 import scontext from './Context';
+import { ClassNames } from '@emotion/react';
 
 
 //now problem is usecontext is defined inside textcomponent and we want to use them in below two fuctions
 //but also we cant put those funtions in textcomp coz we want to export them->use wrapper functions
 
-export function paraChanger(){
+var paraChanger=null;
+var nextChar=null;
+function TextContainer(){
+
+    const context=useContext(scontext)
+
+  paraChanger=()=>{
     context.seti(context.i+1);
     if(context.i==context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
     context. setCurrEle(0);
     context.setii(0);
     context.startTime=0;
-    context.correctlyTypedWords
-    context.totalTypedWords
+    context.correctlyTypedWords=0;
+    context.totalTypedWords=0;
     //render next para on screen by useEffect
    
     }
 
-    function nextChar(){
+     nextChar=()=>{
         //move current underliner to next char and render content on screen
         context.allTypedEntries++;
         context.setCurrEle(context.currEle+1)
         
         }
 
-
-
-
-function TextContainer(){
-    const context=useContext(scontext)
+    
 //const newElement = document.createElement("p");//this is where text will be shown
 
 
@@ -50,18 +53,24 @@ function TextContainer(){
         useEffect(()=>{
             let str = paras[context.i][context.ii];
            
-          let wrappedLetters ="";
-          
-            for(let index=0;index<(str.length);index++)
-                if(str[index]!=' ')
-                wrappedLetters+= `<span id={index}>{str[index]}</span>`
-                else 
-                wrappedLetters+= `<span id={index} style={{display: 'inline-block', fontsize: '24px', color: '#000000', background: '#cccccc', borderRadius:'6px', padding: '10px 20px'}}>•</span>`
-        
-            let tempEle=document.createElement('p')
-            tempEle.innerHTML=wrappedLetters
-           // newElement.innerHTML = wrappedLetters;
-            document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
+            let wrappedLetters ="";
+            
+                for(let index=0;index<(str.length);index++){
+                    // putting the ClassName as underline to first letter 
+                    if(index==0){
+                        wrappedLetters+= `<span id={index} className="underline">{str[index]}</span>`
+                    }
+                    if(str[index]!=' ')
+                    wrappedLetters+= `<span id={index}>{str[index]}</span>`
+                    else 
+                    wrappedLetters+= `<span id={index} style={{display: 'inline-block', fontsize: '24px', color: '#000000', background: '#cccccc', borderRadius:'6px', padding: '10px 20px'}}>•</span>`
+            
+                }
+                
+                let tempEle=document.createElement('p')
+                tempEle.innerHTML=wrappedLetters
+            // newElement.innerHTML = wrappedLetters;
+                document.getElementById("textcontainer").innerHTML=tempEle.innerHTML;
             //how to add shadow dom to content for undeliningx
         },[context.i,context.ii]);
 
@@ -70,7 +79,7 @@ function TextContainer(){
         useEffect(()=>{
             //  remove the  underline class of prev element and add underline class to currEle
             const prevEle = document.getElementsByClassName("underline");
-            prevEle.classList.remove("underline");
+            prevEle[0].classList.remove("underline");
 
             //now add underline class to currEle
             const containerChildren=  document.getElementById("textcontainer");
@@ -84,7 +93,17 @@ function TextContainer(){
             </>
         )
     }
+    
     export default TextContainer;
+    export function wrapperFunction(){
+        return {
+            nextChar,
+            paraChanger
+        }
+    }
+   
+
+
     //export paraChanger
     // export {
     //     paraChanger,

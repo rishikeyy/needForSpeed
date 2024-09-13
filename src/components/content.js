@@ -1,13 +1,13 @@
 import {react} from 'react'
 import './metrics'
-import './screentext'
-import'./keyboard'
-function content(){
+import  ScreenText from './screentext'
+import Keyboard from './keyboard'
+export default function Content(){
     return(
         <>
-        <metrics/>
-         <screenText/>
-         <keyboard/>
+        {/* <metrics/> */}
+         <ScreenText/>
+         <Keyboard/>
         </>
        
     )
