@@ -56,12 +56,12 @@ function TextContainer(){
             let wrappedLetters ="";
             
                 for(let index=0;index<(str.length);index++){
-                    // putting the ClassName as underline to first letter 
+                  //  let currChar=str[index]
                     if(index==0){
-                        wrappedLetters+= `<span id={index} className="underline">{str[index]}</span>`
+                        wrappedLetters+= `<span id={index} className="underline">${str[index]}</span>`
                     }
                     if(str[index]!=' ')
-                    wrappedLetters+= `<span id={index}>{str[index]}</span>`
+                    wrappedLetters+= `<span id={index}>${str[index]}</span>`
                     else 
                     wrappedLetters+= `<span id={index} style={{display: 'inline-block', fontsize: '24px', color: '#000000', background: '#cccccc', borderRadius:'6px', padding: '10px 20px'}}>•</span>`
             
@@ -79,11 +79,18 @@ function TextContainer(){
         useEffect(()=>{
             //  remove the  underline class of prev element and add underline class to currEle
             const prevEle = document.getElementsByClassName("underline");
+            if(prevEle.length==0)
+            {   
+                const containerChildren=  document.getElementById("textcontainer");
+                containerChildren.children[context.currEle].classList.add("underline");
+                return ;
+            }
+            else if(prevEle.length!=0)
             prevEle[0].classList.remove("underline");
 
             //now add underline class to currEle
             const containerChildren=  document.getElementById("textcontainer");
-            containerChildren[context.currEle].classList.add("underline");
+            containerChildren.children[context.currEle].classList.add("underline");
         },[context.currEle])
         
 
