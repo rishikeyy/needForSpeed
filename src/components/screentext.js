@@ -3,8 +3,10 @@ import paras from './paragraphs'
 
 import './textcontainer.css'
 import scontext from './Context';
-import { ClassNames } from '@emotion/react';
+//import { ClassNames } from '@emotion/react';
 
+//-+-+- > put focus on the text part coz pressing space scrolls down and it will
+//also resolve the problem of keypress event
 
 //now problem is usecontext is defined inside textcomponent and we want to use them in below two fuctions
 //but also we cant put those funtions in textcomp coz we want to export them->use wrapper functions

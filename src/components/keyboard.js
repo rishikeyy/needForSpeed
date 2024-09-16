@@ -62,8 +62,8 @@ if(e.key==paras[context.i][context.ii]){nextChar();}
 return (
     <>
     
-    <div class="grid-container">
-  <div class="grid-item button" onKeyDown={handleKeyDown}>1</div>  // apply 'button' classname to all buttons;
+    <div class="grid-container" onKeyDown={handleKeyDown}>
+  <div class="grid-item button" >1</div>  
   <div class="grid-item">2</div>
   <div class="grid-item">3</div>  
   <div class="grid-item">4</div>
