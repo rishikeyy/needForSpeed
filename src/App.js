@@ -14,9 +14,10 @@ function App() {
   const startTime=0;
   const correctlyTypedWords=0;
   const totalTypedWords=0;
+  const [pressedKey, setPressedKey] = useState('');
 
   return (
-   <scontext.Provider value={{paras,i,ii,seti,setii,currEle,setCurrEle,n,allTypedEntries,unCorrectedErrors,startTime,correctlyTypedWords,totalTypedWords}}>
+   <scontext.Provider value={{paras,i,ii,seti,setii,currEle,setCurrEle,n,allTypedEntries,unCorrectedErrors,startTime,correctlyTypedWords,totalTypedWords,pressedKey,setPressedKey}}>
     <Content/>
     {/* <Navbar/> */}
     </scontext.Provider>

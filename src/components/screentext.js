@@ -19,8 +19,8 @@ function TextContainer(){
 
   paraChanger=()=>{
     context.seti(context.i+1);
-    if(context.i==context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
-    context. setCurrEle(0);
+    if(context.i===context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
+    context.setCurrEle(0);
     context.setii(0);
     context.startTime=0;
     context.correctlyTypedWords=0;
@@ -59,10 +59,10 @@ function TextContainer(){
             
                 for(let index=0;index<(str.length);index++){
                   //  let currChar=str[index]
-                    if(index==0){
+                    if(index===0){
                         wrappedLetters+= `<span id={index} className="underline">${str[index]}</span>`
                     }
-                    if(str[index]!=' ')
+                    if(str[index]!==' ')
                     wrappedLetters+= `<span id={index}>${str[index]}</span>`
                     else 
                     wrappedLetters+= `<span id={index} style={{display: 'inline-block', fontsize: '24px', color: '#000000', background: '#cccccc', borderRadius:'6px', padding: '10px 20px'}}>•</span>`
@@ -81,13 +81,13 @@ function TextContainer(){
         useEffect(()=>{
             //  remove the  underline class of prev element and add underline class to currEle
             const prevEle = document.getElementsByClassName("underline");
-            if(prevEle.length==0)
+            if(prevEle.length===0)
             {   
                 const containerChildren=  document.getElementById("textcontainer");
                 containerChildren.children[context.currEle].classList.add("underline");
                 return ;
             }
-            else if(prevEle.length!=0)
+            else if(prevEle.length!==0)
             prevEle[0].classList.remove("underline");
 
             //now add underline class to currEle
@@ -98,7 +98,7 @@ function TextContainer(){
 
         return(
             <>
-            <textcontainer id="textcontainer"></textcontainer>
+            <div id="textcontainer"></div>
             </>
         )
     }
