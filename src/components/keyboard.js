@@ -3,8 +3,7 @@ import './keyboard.css'
 import './screentext'
 import  paras from './paragraphs'
 import scontext from './Context';
-import { wrapperFunction } from './screentext';
-const  {nextChar,paraChanger}= wrapperFunction();
+
 
 
 function  Keyboard(){
@@ -57,7 +56,6 @@ function  Keyboard(){
 
 
     
-
 
 return (
     <>

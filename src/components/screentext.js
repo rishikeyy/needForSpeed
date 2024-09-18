@@ -17,24 +17,9 @@ function TextContainer(){
 
     const context=useContext(scontext)
 
-  paraChanger=()=>{
-    context.seti(context.i+1);
-    if(context.i===context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
-    context.setCurrEle(0);
-    context.setii(0);
-    context.startTime=0;
-    context.correctlyTypedWords=0;
-    context.totalTypedWords=0;
-    //render next para on screen by useEffect
-   
-    }
+  
 
-     nextChar=()=>{
-        //move current underliner to next char and render content on screen
-        context.allTypedEntries++;
-        context.setCurrEle(context.currEle+1)
-        
-        }
+     
 
     
 //const newElement = document.createElement("p");//this is where text will be shown
@@ -104,12 +89,8 @@ function TextContainer(){
     }
     
     export default TextContainer;
-    export function wrapperFunction(){
-        return {
-            nextChar,
-            paraChanger
-        }
-    }
+    
+  
    
 
 

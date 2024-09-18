@@ -1,4 +1,5 @@
 const paras = [
+   //[]-> content bw these is para
    ["rate tare late tear tire are era late alter taler alert trial taint art ate ear rental talent rat tar tea tie lantern literal retrial let ten ate ear ire lit ret tie retail rat tar tea tailor tealer rat tar alt",
 "retailer tailored literal eternal internal oriental material oriental internal external eternal tenor later trial tailor rental tanner taler alert retail retrial literal oriental internal external eternal"
    ],

@@ -5,9 +5,10 @@ import Content from './components/content.js'
 import  scontext from './components/Context.js'
 function App() {
   
- // const paras=Object.values(paras);
+  // i,ii,iii refer to 3-Dimensions of paras
   const [i,seti]=useState(0);
   const [ii,setii]=useState(0);
+  const [iii,setiii]=useState(0);
   const [currEle,setCurrEle]=useState(0);
   const n=paras.length
   const allTypedEntries=0,unCorrectedErrors=0;
@@ -17,7 +18,7 @@ function App() {
   const [pressedKey, setPressedKey] = useState('');
 
   return (
-   <scontext.Provider value={{paras,i,ii,seti,setii,currEle,setCurrEle,n,allTypedEntries,unCorrectedErrors,startTime,correctlyTypedWords,totalTypedWords,pressedKey,setPressedKey}}>
+   <scontext.Provider value={{paras,i,ii,iii,seti,setii,setiii,currEle,setCurrEle,n,allTypedEntries,unCorrectedErrors,startTime,correctlyTypedWords,totalTypedWords,pressedKey,setPressedKey}}>
     <Content/>
     {/* <Navbar/> */}
     </scontext.Provider>

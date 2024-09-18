@@ -3,9 +3,9 @@ import  ScreenText from './screentext'
 import Keyboard from './keyboard'
 import  paras from './paragraphs'
 import scontext from './Context';
-import { wrapperFunction } from './screentext';
-import Keytrace from './keytrace'
-const  {nextChar,paraChanger}= wrapperFunction();
+
+//import Keytrace from './keytrace'
+
 
 
 export default function Content(){
@@ -14,7 +14,52 @@ const context=useContext(scontext)
 
 function handleKeyDown(e){
   
-console.log("key pressed:",context.pressedKey)
+console.log("key pressed:",e.key)
+
+if (e.key === ' ') {
+    e.preventDefault();
+  }
+
+
+    function paraChanger(){
+    context.seti(context.i+1);
+    if(context.i===context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
+    context.setCurrEle(0);
+    context.setii(0);
+    context.allTypedEntries=0;
+    context.startTime=0;
+    context.correctlyTypedWords=0;
+    context.totalTypedWords=0;
+    }
+
+  function nextChar(){
+    
+        context.setiii(context.iii+1)
+        if(context.iii===paras[context.i][context.ii].length){
+            context.setiii(0);
+            context.setii(context.ii+1)
+        }
+        if(context.ii===paras[context.i].length){
+            paraChanger();
+        }
+        context.allTypedEntries++;
+        context.setCurrEle(context.currEle+1)
+        
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     function check_accuracy(allTypedEntries,unCorrectedErrors){
         let endTime=Date.now()
@@ -39,7 +84,8 @@ console.log("key pressed:",context.pressedKey)
     if(context.i==paras.length){check_accuracy(context.allTypedEntries,context.unCorrectedErrors);}
     else if(context.ii==(paras[context.i]).length){check_accuracy(context.allTypedEntries,context.unCorrectedErrors); }
     
-    if(context.pressedKey===paras[context.i][context.ii]){nextChar();} //e.key is also same as pressedKey
+
+    if(e.key===paras[context.i][context.ii][context.iii]){nextChar();} 
     else {
         //we wait until correct character is not typed
         context.unCorrectedErrors++;
@@ -51,8 +97,8 @@ console.log("key pressed:",context.pressedKey)
 
 
     return(
-        //onKeyDown={handleKeyDown}r
-        <div   tabIndex={-1}>
+        //onKeyDown={handleKeyDown} 
+        <div onKeyDown={handleKeyDown}  tabIndex={-1}>
         {/* <metrics/> */}
          <ScreenText/>
          <Keyboard/>
