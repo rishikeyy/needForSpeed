@@ -21,6 +21,7 @@ if (e.key === ' ') {
   }
 
 
+    //here setting i leads to re-render with previous ii and prev currEle-> leading to outofBound error
     function paraChanger(){
     context.seti(context.i+1);
     if(context.i===context.n)context.seti(context.i-1);//feed last key data if all keys are mastered and data is exhauasted
@@ -33,17 +34,23 @@ if (e.key === ' ') {
     }
 
   function nextChar(){
-    
-        context.setiii(context.iii+1)
-        if(context.iii===paras[context.i][context.ii].length){
+
+        let newiii=context.iii+1
+        
+
+        if(newiii===paras[context.i][context.ii].length){
             context.setiii(0);
             context.setii(context.ii+1)
+            context.setCurrEle(0)
+            newiii=0
         }
         if(context.ii===paras[context.i].length){
             paraChanger();
         }
         context.allTypedEntries++;
-        context.setCurrEle(context.currEle+1)
+        
+        context.setCurrEle(newiii)
+        context.setiii(newiii)
         
         
         }

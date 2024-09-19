@@ -11,8 +11,7 @@ import scontext from './Context';
 //now problem is usecontext is defined inside textcomponent and we want to use them in below two fuctions
 //but also we cant put those funtions in textcomp coz we want to export them->use wrapper functions
 
-var paraChanger=null;
-var nextChar=null;
+
 function TextContainer(){
 
     const context=useContext(scontext)
@@ -46,6 +45,8 @@ function TextContainer(){
                   //  let currChar=str[index]
                     if(index===0){
                         wrappedLetters+= `<span id={index} className="underline">${str[index]}</span>`
+                        continue
+
                     }
                     if(str[index]!==' ')
                     wrappedLetters+= `<span id={index}>${str[index]}</span>`
