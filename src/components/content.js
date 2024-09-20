@@ -40,7 +40,13 @@ if (e.key === ' ') {
 
         if(newiii===paras[context.i][context.ii].length){
             context.setiii(0);
-            context.setii(context.ii+1)
+            if(context.ii+1<paras[context.i].length){
+                context.setii(context.ii+1)
+            }
+           
+            else {
+                paraChanger();
+            }
             context.setCurrEle(0)
             newiii=0
         }
